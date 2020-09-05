@@ -7,18 +7,17 @@ P_i = [0.082, 0.015, 0.028, 0.043, 0.13, 0.022, 0.020, 0.061, 0.070, 0.0015,
        0.0077, 0.04, 0.024, 0.067, 0.075, 0.019, 0.00095, 0.06, 0.063, 0.091,
        0.028, 0.0098, 0.024, 0.0015, 0.02, 0.00074]
 
+pprint = PrettyPrinter().pprint
+
 
 def main():
     cipher_array = []
 
     with open('ciphertext.txt', 'r') as ciphertext:
         while char := ciphertext.read(2):
-            # print(char)
             cipher_array.append(int(char, base=16))
 
     key_length = find_key_length(cipher_array)
-
-    # # key_length = 4
 
     # key = find_key(cipher_array, key_length)
 
@@ -26,7 +25,7 @@ def main():
 
 
 def find_key_length(cipher_array):
-    distributions = {}
+    sum_q_i_2 = {}
 
     # Iterate over all possible keylengths
     for n in range(MIN_LENGTH, MAX_LENGTH + 1):
@@ -35,20 +34,19 @@ def find_key_length(cipher_array):
 
         # Count all occurrences into hist
         for i in range(0, len(cipher_array), n):
-            # print(cipher_array[i])
             hist[cipher_array[i]] += 1
 
-        print(hist)
-        breakpoint()
         total = sum(hist)
 
-        p_i_2 = [((i / total) ** 2) for i in hist]
+        q_i = [(i / total) for i in hist]
 
-        distributions[n] = sum(p_i_2)
+        q_i_2 = [i ** 2 for i in q_i]
 
-    PrettyPrinter().pprint(distributions)
+        sum_q_i_2[n] = sum(q_i_2)
 
-    maximum = max(distributions.items(), key=operator.itemgetter(1))[0]
+    pprint(sum_q_i_2)
+
+    maximum = max(sum_q_i_2.items(), key=operator.itemgetter(1))[0]
     return maximum
 
 

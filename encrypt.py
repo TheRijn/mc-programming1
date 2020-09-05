@@ -12,11 +12,11 @@ useful python commands:
     Return the integer ordinal of a one-character string.
     Example: ord('d') == 100
 
-    chr(i) -> character    
+    chr(i) -> character
     Return a string of one character with ordinal i; 0 <= i < 256.
     Example: chr(100) == 'd'
 
-    int(x, base=16) -> int or long        
+    int(x, base=16) -> int or long
     Converts hexadecimal string x to an integer
     Example:  int('7b', 16) == 123
 
@@ -28,7 +28,7 @@ useful python commands:
     returns the binary representation (at least 8 characters) of an integer
     Example: '{0:08b}'.format(23) == '00010111'
 
-    x.__xor__(y) <==> x^y   
+    x.__xor__(y) <==> x^y
     bitwise XOR of x and y
     Example: 23 ^ 156 == 139 , because  00010111 XOR 10011100 == 10001011
 """
