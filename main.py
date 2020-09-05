@@ -14,8 +14,10 @@ def main():
     cipher_array = []
 
     with open('ciphertext.txt', 'r') as ciphertext:
-        while char := ciphertext.read(2):
+        char = ciphertext.read(2)
+        while char:
             cipher_array.append(int(char, base=16))
+            char = ciphertext.read(2)
 
     key_length = find_key_length(cipher_array)
 
