@@ -2,8 +2,8 @@
 # author: Christian Schaffner
 from random import randint
 
-KEY_LENGTH = 4   # could be anything from 1 to 13
-KEY = ['{0:02x}'.format(randint(0,255)) for x in range(KEY_LENGTH)]
+KEY_LENGTH = 2   # could be anything from 1 to 13
+KEY = ['{0:02x}'.format(randint(0, 255)) for x in range(KEY_LENGTH)]
 
 """
 useful python commands:
